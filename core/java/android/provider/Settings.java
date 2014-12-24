@@ -3706,11 +3706,6 @@ public final class Settings {
         public static final String BUTTON_BACK_KILL_ENABLE = "button_back_kill_enable";
 
         /**
-         * @hide
-         */
-        public static final String GLOBAL_ACTIONS_LIST = "global_actions_list";
-
-        /**
          *  Enable statusbar double tap gesture on to put device to sleep
          * @hide
          */

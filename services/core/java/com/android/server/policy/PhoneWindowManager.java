@@ -941,9 +941,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     Settings.Global.POLICY_CONTROL), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.GLOBAL_ACTIONS_LIST), false, this,
-                    UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.VOLUME_BUTTON_WAKE), false, this,
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
@@ -971,8 +968,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             updateSettings();
         }
 
-        @Override
-        public void onChange(boolean selfChange) {
+        @Override public void onChange(boolean selfChange) {
             updateSettings();
             updateRotation(false);
         }
@@ -2288,9 +2284,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             }
             if (mImmersiveModeConfirmation != null) {
                 mImmersiveModeConfirmation.loadSetting(mCurrentUserId);
-            }
-            if (mGlobalActions != null) {
-                mGlobalActions.settingsChanged();
             }
             mVolumeWakeSupport = Settings.System.getIntForUser(resolver,
                     Settings.System.VOLUME_BUTTON_WAKE, 0,
@@ -7571,7 +7564,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     if (mContext.getPackageManager().hasSystemFeature(FEATURE_TELEVISION)) {
                         theme = com.android.internal.R.style.Theme_Leanback_Dialog_Alert;
                     } else {
-                        theme = com.android.internal.R.style.Theme_Material_DayNight_Dialog_Alert;
+                        theme = 0;
                     }
 
                     mBootMsgDialog = new ProgressDialog(mContext, theme) {
