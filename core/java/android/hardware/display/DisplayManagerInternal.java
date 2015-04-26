@@ -320,6 +320,7 @@ public abstract class DisplayManagerInternal {
 
         void acquireSuspendBlocker();
         void releaseSuspendBlocker();
+        void onBrightnessChanged(int value);
     }
 
     /**
