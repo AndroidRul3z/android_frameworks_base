@@ -3634,37 +3634,27 @@ public final class Settings {
          */
 
         /**
-<<<<<<< HEAD
-=======
-         * @hide
-         */
-        public static final String GLOBAL_ACTIONS_LIST = "global_actions_list";
-
-        /**
->>>>>>> 5904b53... policy: readd volume button wake
          * Show onscreen keys for hw button devices
          * @hide
          */
         public static final String NAVIGATION_BAR_SHOW = "navigation_bar_show";
 
         /**
-         * Whether to display set of animations when prompting the power menu
-         *
          * @hide
          */
-        public static final String POWER_MENU_ANIMATIONS = "power_menu_animations";
-
-        /**
-         * Whether volume button press shuld be treated as wake key
-         * @hide
-         */
-        public static final String VOLUME_BUTTON_WAKE = "volume_button_wake";
+        public static final String GLOBAL_ACTIONS_LIST = "global_actions_list";
 
         /**
          * Change volume up and down handlign based on rotation
          * @hide
          */
         public static final String SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
+
+        /**
+         * Whether volume button press shuld be treated as wake key
+         * @hide
+         */
+        public static final String VOLUME_BUTTON_WAKE = "volume_button_wake";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
