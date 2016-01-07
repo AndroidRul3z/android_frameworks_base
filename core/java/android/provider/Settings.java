@@ -3797,6 +3797,12 @@ public final class Settings {
          */
          public static final String HEADSET_PLUGGED_NOTIFICATION = "headset_plugged_notification";
 
+        /**
+         * Whether to show Brightness Icon On Brightness Slider
+         * @hide
+         */
+        public static final String QS_SHOW_BRIGHTNESS_ICON = "qs_show_brightness_icon";
+
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
