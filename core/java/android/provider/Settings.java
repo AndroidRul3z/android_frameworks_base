@@ -3655,6 +3655,12 @@ public final class Settings {
                 new InclusiveFloatRangeValidator(-7, 7);
 
         /**
+         * Whether the phone volume up / down effect should be played
+         * @hide
+         */
+        public static final String VOLUME_ADJUST_SOUNDS_ENABLED = "volume_adjust_sounds_enabled";
+
+        /**
          * Whether lock-to-app will be triggered by long-press on recents.
          * @hide
          */
@@ -3797,11 +3803,7 @@ public final class Settings {
          */
          public static final String HEADSET_PLUGGED_NOTIFICATION = "headset_plugged_notification";
 
-        /**
-         * Change volume up and down handlign based on rotation
-         * @hide
-         */
-        public static final String SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
+
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
