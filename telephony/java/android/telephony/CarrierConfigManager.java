@@ -1055,6 +1055,13 @@ public class CarrierConfigManager {
     public static final String KEY_PROTOCOL_ERRORS_PERM_FAILURE = "protocol_errors_perm_failure";
 
     /**
+     * Key that determines if anonymous users to be mapped to presentation restricted
+     * @hide
+     */
+    public static final String KEY_MAP_ANONYMOUS_TO_RESTRICTED_BOOL =
+            "carrier_map_anonymous_to_restricted";
+
+    /**
      * Carrier specified WiFi networks.
      * @hide
      */
@@ -1288,6 +1295,7 @@ public class CarrierConfigManager {
         sDefaults.putBoolean(KEY_EDITABLE_TETHER_APN_BOOL, false);
         sDefaults.putBoolean(KEY_SUPPORT_3GPP_CALL_FORWARDING_WHILE_ROAMING_BOOL, true);
         sDefaults.putStringArray(KEY_CALL_FORWARDING_BLOCKS_WHILE_ROAMING_STRING_ARRAY, null);
+        sDefaults.putBoolean(KEY_MAP_ANONYMOUS_TO_RESTRICTED_BOOL, true);
     }
 
     /**
