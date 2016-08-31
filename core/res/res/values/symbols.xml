@@ -2751,4 +2751,6 @@
   <java-symbol type="drawable" name="lockscreen_selected" />
   <!-- SIM contact batch operation -->
   <java-symbol type="bool" name="config_sim_phonebook_batch_operation" />
+  <java-symbol type="bool" name="config_volte_preferred" />
+
 </resources>
