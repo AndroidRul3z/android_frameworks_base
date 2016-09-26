@@ -31,4 +31,9 @@
 
     <!-- SystemUI Tuner Parts -->
     <string name="systemui_tuner_statusbar_title">Statusbar items</string>
+
+    <!-- QS -->
+    <string name="quick_settings_expanded_desktop_label">Expanded desktop</string>
+    <string name="quick_settings_expanded_desktop">Expanded</string>
+    <string name="quick_settings_expanded_desktop_off">Normal</string>
 </resources>
