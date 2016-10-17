@@ -6522,6 +6522,15 @@ public final class Settings {
          */
         public static final String ENABLED_VR_LISTENERS = "enabled_vr_listeners";
 
+       /**
+         * Status bar battery %
+         * 0: Hide the battery percentage
+         * 1: Display the battery percentage inside the icon
+         * 2: Display the battery percentage next to the icon
+         * @hide
+         */
+        public static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
+
         /**
          * Behavior of the display while in VR mode.
          *
@@ -6782,6 +6791,7 @@ public final class Settings {
             CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED,
             SYSTEM_NAVIGATION_KEYS_ENABLED,
             QS_TILES,
+            STATUS_BAR_SHOW_BATTERY_PERCENT,
             DOZE_ENABLED,
             DOZE_PULSE_ON_PICK_UP,
             DOZE_PULSE_ON_DOUBLE_TAP,
