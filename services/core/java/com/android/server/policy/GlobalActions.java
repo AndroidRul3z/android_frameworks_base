@@ -1554,9 +1554,11 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
             }
         };
 
-        final Runnable mScreenshotTrigger = new Runnable() {
-            @Override
-            public void run() {
+        private void takeScreenshot() {
+            synchronized (mScreenshotLock) {
+                if (mScreenshotConnection != null) {
+                    return;
+                }
                 ComponentName cn = new ComponentName("com.android.systemui",
                         "com.android.systemui.screenshot.TakeScreenshotService");
                 Intent intent = new Intent();
@@ -1585,12 +1587,15 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
                             };
                             msg.replyTo = new Messenger(h);
                             msg.arg1 = msg.arg2 = 0;
+
                             if (mStatusBar != null && mStatusBar.isVisibleLw())
                                 msg.arg1 = 1;
                             if (mNavigationBar != null && mNavigationBar.isVisibleLw())
                                 msg.arg2 = 1;
-                            try { messenger.send(msg); }
-                            catch (RemoteException e) {}
+                            try {
+                                messenger.send(msg);
+                            } catch (RemoteException e) {
+                            }
                         }
                     }
                     @Override
@@ -1601,8 +1606,7 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
                     mHandler.postDelayed(mScreenshotTimeout, 10000);
                 }
             }
-        };
-
+        }
         @Override
         public boolean showDuringKeyguard() {
             return true;
@@ -1625,12 +1629,13 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
 
         @Override
         public void onPress() {
-            synchronized (mScreenshotLock) {
-                if (mScreenshotConnection != null) {
-                    return;
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    takeScreenshot();
                 }
-                mHandler.postDelayed(mScreenshotTrigger, 1000);
-            }
+            }, 1000);
         }
     }
 
