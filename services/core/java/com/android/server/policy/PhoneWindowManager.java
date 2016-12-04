@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2006 The Android Open Source Project
+ * Copyright (C) 2013-2016 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -910,6 +911,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         void observe() {
             // Observe all users' changes
             ContentResolver resolver = mContext.getContentResolver();
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.NAVIGATION_BAR_HEIGHT), false, this,
+                    UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.END_BUTTON_BEHAVIOR), false, this,
                     UserHandle.USER_ALL);
@@ -2245,6 +2249,24 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     Settings.Secure.INCALL_BACK_BUTTON_BEHAVIOR_DEFAULT,
                     UserHandle.USER_CURRENT);
 
+            // Height of navigation bar buttons
+            int mNavButtonsHeight = Settings.System.getIntForUser(resolver,
+                    Settings.System.NAVIGATION_BAR_HEIGHT, 48, UserHandle.USER_CURRENT);
+            // Height of the navigation bar when presented horizontally at bottom
+            mNavigationBarHeightForRotationDefault[mPortraitRotation] =
+                    mNavigationBarHeightForRotationDefault[mUpsideDownRotation] =
+                            mNavButtonsHeight * DisplayMetrics.DENSITY_DEVICE/DisplayMetrics.DENSITY_DEFAULT;
+            mNavigationBarHeightForRotationDefault[mLandscapeRotation] =
+                    mNavigationBarHeightForRotationDefault[mSeascapeRotation] =
+                            mNavButtonsHeight * DisplayMetrics.DENSITY_DEVICE/DisplayMetrics.DENSITY_DEFAULT;
+
+            // Width of the navigation bar when presented vertically along one side
+            mNavigationBarWidthForRotationDefault[mPortraitRotation] =
+                    mNavigationBarWidthForRotationDefault[mUpsideDownRotation] =
+                            mNavigationBarWidthForRotationDefault[mLandscapeRotation] =
+                                    mNavigationBarWidthForRotationDefault[mSeascapeRotation] =
+                                            (mNavButtonsHeight - 6) * DisplayMetrics.DENSITY_DEVICE/DisplayMetrics.DENSITY_DEFAULT;
+
             // Configure wake gesture.
             boolean wakeGestureEnabledSetting = Settings.Secure.getIntForUser(resolver,
                     Settings.Secure.WAKE_GESTURE_ENABLED, 0,
@@ -2656,20 +2678,24 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         mStatusBarHeight =
                 res.getDimensionPixelSize(com.android.internal.R.dimen.status_bar_height);
 
+        // Height of navigation bar buttons
+        int mNavButtonsHeight = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.NAVIGATION_BAR_HEIGHT, 48, UserHandle.USER_CURRENT);
         // Height of the navigation bar when presented horizontally at bottom
         mNavigationBarHeightForRotationDefault[mPortraitRotation] =
-        mNavigationBarHeightForRotationDefault[mUpsideDownRotation] =
-                res.getDimensionPixelSize(com.android.internal.R.dimen.navigation_bar_height);
+                mNavigationBarHeightForRotationDefault[mUpsideDownRotation] =
+                        mNavButtonsHeight * DisplayMetrics.DENSITY_DEVICE/DisplayMetrics.DENSITY_DEFAULT;
         mNavigationBarHeightForRotationDefault[mLandscapeRotation] =
-        mNavigationBarHeightForRotationDefault[mSeascapeRotation] = res.getDimensionPixelSize(
-                com.android.internal.R.dimen.navigation_bar_height_landscape);
+                mNavigationBarHeightForRotationDefault[mSeascapeRotation] =
+                        mNavButtonsHeight * DisplayMetrics.DENSITY_DEVICE/DisplayMetrics.DENSITY_DEFAULT;
 
         // Width of the navigation bar when presented vertically along one side
         mNavigationBarWidthForRotationDefault[mPortraitRotation] =
-        mNavigationBarWidthForRotationDefault[mUpsideDownRotation] =
-        mNavigationBarWidthForRotationDefault[mLandscapeRotation] =
-        mNavigationBarWidthForRotationDefault[mSeascapeRotation] =
-                res.getDimensionPixelSize(com.android.internal.R.dimen.navigation_bar_width);
+                mNavigationBarWidthForRotationDefault[mUpsideDownRotation] =
+                        mNavigationBarWidthForRotationDefault[mLandscapeRotation] =
+                                mNavigationBarWidthForRotationDefault[mSeascapeRotation] =
+                                        (mNavButtonsHeight - 6) * DisplayMetrics.DENSITY_DEVICE/DisplayMetrics.DENSITY_DEFAULT;
+
 
         if (ALTERNATE_CAR_MODE_NAV_SIZE) {
             // Height of the navigation bar when presented horizontally at bottom
