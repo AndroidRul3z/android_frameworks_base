@@ -834,6 +834,16 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
             public boolean showBeforeProvisioning() {
                 return true;
             }
+            @Override
+            public boolean showDuringRestrictedKeyguard() {
+                return false;
+            }
+
+            @Override
+            public boolean showForCurrentUser() {
+                return true;
+            }
+
         };
     }
 
