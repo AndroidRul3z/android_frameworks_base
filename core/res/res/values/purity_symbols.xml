@@ -32,5 +32,9 @@
   <!-- Package Manager -->
   <java-symbol type="array" name="config_disabledComponents" />
   <java-symbol type="array" name="config_forceEnabledComponents" />
+
+  <!-- FP unlock Boost -->
+  <java-symbol type="bool" name="config_enableFPUnlockBoost" />
+  <java-symbol type="integer" name="fpunlockboost_duration" />
 </resources>
 
