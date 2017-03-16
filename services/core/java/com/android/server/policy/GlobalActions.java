@@ -34,6 +34,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.KeyguardManager;
 import android.app.NotificationManager;
+import android.app.UiModeManager;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -616,6 +617,11 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
             View content = LayoutInflater.from(mContext).inflate(
                     R.layout.global_action_dismissable_dialog, null);
             final CheckBox dontShowAgain = (CheckBox) content.findViewById(R.id.global_action_skip);
+            UiModeManager uiManager = (UiModeManager) mContext.getSystemService(Context.UI_MODE_SERVICE);
+            if (uiManager.getNightMode() == UiModeManager.MODE_NIGHT_YES) {
+                dontShowAgain.setTextColor(mContext.getResources().getColor(
+                    com.android.internal.R.color.global_actions_text_color_dark));
+            }
 
             b.setTitle(R.string.global_action_reboot);
             b.setView(content);
@@ -1301,6 +1307,15 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
             TextView messageView = (TextView) v.findViewById(R.id.message);
 
             TextView statusView = (TextView) v.findViewById(R.id.status);
+
+            UiModeManager uiManager = (UiModeManager) context.getSystemService(Context.UI_MODE_SERVICE);
+            if (uiManager.getNightMode() == UiModeManager.MODE_NIGHT_YES) {
+                int darkModeTextColor = context.getResources().getColor(
+                    com.android.internal.R.color.global_actions_text_color_dark);
+                messageView.setTextColor(darkModeTextColor);
+                statusView.setTextColor(darkModeTextColor);
+            }
+
             final String status = getStatus();
             if (!TextUtils.isEmpty(status)) {
                 statusView.setText(status);
@@ -1405,10 +1420,16 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
             TextView statusView = (TextView) v.findViewById(R.id.status);
             final boolean enabled = isEnabled();
 
-            if (messageView != null) {
-                messageView.setText(mMessageResId);
-                messageView.setEnabled(enabled);
+            UiModeManager uiManager = (UiModeManager) context.getSystemService(Context.UI_MODE_SERVICE);
+            if (uiManager.getNightMode() == UiModeManager.MODE_NIGHT_YES) {
+                int darkModeTextColor = context.getResources().getColor(
+                    com.android.internal.R.color.global_actions_text_color_dark);
+                messageView.setTextColor(darkModeTextColor);
+                statusView.setTextColor(darkModeTextColor);
             }
+
+            messageView.setText(mMessageResId);
+            messageView.setEnabled(enabled);
 
             boolean on = ((mState == State.On) || (mState == State.TurningOn));
             if (icon != null) {
@@ -1417,11 +1438,8 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
                 icon.setEnabled(enabled);
             }
 
-            if (statusView != null) {
-                statusView.setText(on ? mEnabledStatusMessageResId : mDisabledStatusMessageResId);
-                statusView.setVisibility(View.VISIBLE);
-                statusView.setEnabled(enabled);
-            }
+            statusView.setText(on ? mEnabledStatusMessageResId : mDisabledStatusMessageResId);
+            statusView.setEnabled(enabled);
             v.setEnabled(enabled);
 
             return v;
