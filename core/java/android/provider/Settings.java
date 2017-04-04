@@ -6664,6 +6664,12 @@ public final class Settings {
         public static final String CARRIER_APPS_HANDLED = "carrier_apps_handled";
 
         /**
+         * Whether to include options in power menu for rebooting into recovery and bootloader
+         * @hide
+         */
+        public static final String EXTENDED_REBOOT = "extended_reboot";
+
+        /**
          * Whether parent user can access remote contact in managed profile.
          *
          * @hide
