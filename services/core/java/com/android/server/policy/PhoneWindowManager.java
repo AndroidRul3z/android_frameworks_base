@@ -900,7 +900,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                             KeyEvent.changeAction(event, KeyEvent.ACTION_UP));
                     mVolumeMusicControlActive = true;
                     break;
-                }
                 case MSG_DISPATCH_KEYPRESS_BOOST_UNBLOCK:
                     mKeypressBoostBlocked = false;
                     break;
