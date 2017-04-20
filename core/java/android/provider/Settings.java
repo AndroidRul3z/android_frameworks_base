@@ -3698,8 +3698,6 @@ public final class Settings {
          */
 
         /**
-<<<<<<< HEAD
-=======
          * @hide
          */
         public static final String BUTTON_BACK_KILL_TIMEOUT = "button_back_kill_timeout";
@@ -3715,7 +3713,6 @@ public final class Settings {
         public static final String GLOBAL_ACTIONS_LIST = "global_actions_list";
 
         /**
->>>>>>> 5904b53... policy: readd volume button wake
          * Show onscreen keys for hw button devices
          * @hide
          */
@@ -3802,7 +3799,6 @@ public final class Settings {
          * @hide
          */
          public static final String HEADSET_PLUGGED_NOTIFICATION = "headset_plugged_notification";
-
 
 
         /**
