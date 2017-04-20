@@ -1373,13 +1373,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         }
         int dockSide = WindowManagerProxy.getInstance().getDockSide();
         if (dockSide == WindowManager.DOCKED_INVALID) {
-            if (!mOmniSwitchRecents) {
-                    ActivityManager.DOCKED_STACK_CREATE_MODE_TOP_OR_LEFT, null, metricsDockAction);
-                mRecents.dockTopTask(NavigationBarGestureHelper.DRAG_MODE_NONE,
-                        ActivityManager.DOCKED_STACK_CREATE_MODE_TOP_OR_LEFT, null, metricsDockAction);
-            } else {
                 TaskUtils.dockTopTask(mContext);
-            }
         } else {
             EventBus.getDefault().send(new UndockingTaskEvent());
             if (metricsUndockAction != -1) {
