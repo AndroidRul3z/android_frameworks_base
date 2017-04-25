@@ -44,16 +44,11 @@
     <string name="silent_mode_priority">Priorità</string>
     <string name="silent_mode_none">Nessuna</string>
 
-    <!-- advanced reboot system -->
-    <string name="reboot_system_title">Reboot system</string>
-    <string name="reboot_system_message">Rebooting\u2026</string>
     <!-- global actions dnd selector -->
     <string name="dnd_mode_off">Non attivo</string>
     <string name="dnd_mode_total_silence">Silenzio totale</string>
     <string name="dnd_mode_alarms">Solo sveglie</string>
     <string name="dnd_mode_important">Solo con priorità</string>
-    <!-- Vendor mismatched fingerprint warning [CHAR LIMIT=NONE] -->
-    <string name="system_error_vendorprint">Your vendor image does not match the system. Please flash the <xliff:g id="string">%s</xliff:g> vendor image for your device</string>
 
     <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permlab_fakePackageSignature">Spoof firma pacchetto</string>
