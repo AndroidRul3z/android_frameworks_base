@@ -66,4 +66,9 @@
     <string name="lock_to_app_toast_back">Per sbloccare questa schermata, tieni premuto il tasto indietro.</string>
   <!-- Vendor mismatched fingerprint warning [CHAR LIMIT=NONE] -->
   <string name="system_error_vendorprint">L\'immagine del fornitore non corrisponde al sistema. Per favore esegui il flash dell\'immagine del fornitore di <xliff:g id="string">%s </xliff:g> per il dispositivo</string>
+
+    <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permlab_modifyOverlays">modifica overlay del tema</string>
+    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permdesc_modifyOverlays">Permetti all\'app di modificare il tema attraverso l\'OverlayManagerService</string>
 </resources>
