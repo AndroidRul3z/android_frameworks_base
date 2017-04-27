@@ -2250,10 +2250,10 @@ message MetricsEvent {
     // OPEN: QS NFC tile shown
     // ACTION: QS NFC tile tapped
     // CATEGORY: QUICK_SETTINGS
-    QS_NFC = 497;
+    QS_NFC = 501;
 
     // Location detail adapter
-    QS_LOCATION_DETAIL = 504;
+    QS_LOCATION_DETAIL = 502;
 
     // Add new aosp constants above this line.
     // END OF AOSP CONSTANTS
