@@ -45,6 +45,12 @@
     <string name="stream_title_system">Sistema</string>
     <string name="stream_title_alarm">Sveglia</string>
     <string name="stream_title_notification">Notifica</string>
+    <string name="stream_title_call">Chiamate</string>
+    <string name="stream_title_system">Sistema</string>
+    <string name="stream_title_ring">Suoneria</string>
+    <string name="stream_title_media">Media</string>
+    <string name="stream_title_alarm">Sveglia</string>
+    <string name="stream_title_notification">Notifica</string>
 
     <!-- SystemUI Tuner Parts -->
     <string name="systemui_tuner_statusbar_title">Elementi della barra di stato</string>
