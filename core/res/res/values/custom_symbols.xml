@@ -70,7 +70,6 @@
   <java-symbol type="bool" name="config_multiColorBatteryLed" />
   <java-symbol type="bool" name="config_intrusiveBatteryLed" />
 
-  <java-symbol type="bool" name="config_enableScreenrecordChord" />
   <java-symbol type="drawable" name="ic_global_screenshot" />
   <java-symbol type="string" name="global_action_screenshot" />
   <java-symbol type="drawable" name="ic_global_screenrecord" />
