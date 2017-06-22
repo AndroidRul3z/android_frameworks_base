@@ -210,6 +210,7 @@ import com.android.systemui.statusbar.stack.StackStateAnimator;
 import com.android.systemui.volume.VolumeComponent;
 import com.android.internal.util.omni.DeviceUtils;
 import com.android.internal.util.omni.TaskUtils;
+import com.android.internal.util.omni.OmniUtils;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -1120,6 +1121,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         filter.addAction(Intent.ACTION_SCREEN_OFF);
         filter.addAction(Intent.ACTION_SCREEN_ON);
         filter.addAction(DevicePolicyManager.ACTION_SHOW_DEVICE_MONITORING_DIALOG);
+        filter.addAction(OmniUtils.ACTION_DISMISS_KEYGUARD);
         context.registerReceiverAsUser(mBroadcastReceiver, UserHandle.ALL, filter, null, null);
 
         IntentFilter demoFilter = new IntentFilter();
@@ -3848,6 +3850,14 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             else if (DevicePolicyManager.ACTION_SHOW_DEVICE_MONITORING_DIALOG.equals(action)) {
                 mQSPanel.showDeviceMonitoringDialog();
             }
+            else if (OmniUtils.ACTION_DISMISS_KEYGUARD.equals(action)) {
+                if (intent.hasExtra(OmniUtils.DISMISS_KEYGUARD_EXTRA_INTENT)) {
+                    Intent launchIntent = (Intent) intent.getParcelableExtra(OmniUtils.DISMISS_KEYGUARD_EXTRA_INTENT);
+                    startActivityDismissingKeyguard(launchIntent, true, true);
+                } else {
+                    dismissKeyguard();
+                }
+            }
         }
     };
 
@@ -5499,3 +5509,4 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         }
     }
 }
+
