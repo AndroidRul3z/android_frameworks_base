@@ -58,7 +58,4 @@
 
    <!-- Defines the length of FP unlock boost -->
   <integer name="fpunlockboost_duration">700</integer>
-
-  <!-- Whether notify fingerprint client of successful cancelled authentication -->
-  <bool name="config_notifyClientOnFingerprintCancelSuccess">false</bool>
 </resources>
