@@ -38,6 +38,12 @@
     <!-- Does the battery LED support multiple colors? Used to decide if the user can change the colors -->
     <bool name="config_multiColorBatteryLed">false</bool>
 
+    <!-- Does the device supports fast charging -->
+    <bool name="config_FastChargingLedSupported">false</bool>
+
+    <!-- Default value for led color when battery is low on charge -->
+    <integer name="config_notificationsFastBatteryARGB">0x0000FF</integer>
+
     <bool name="config_button_brightness_support">false</bool>
     <integer name="config_button_brightness_default">128</integer>
 
@@ -75,4 +81,7 @@
     -->
     <integer name="config_longPressOnMenuBehavior">0</integer>
 
+
+
 </resources>
+
