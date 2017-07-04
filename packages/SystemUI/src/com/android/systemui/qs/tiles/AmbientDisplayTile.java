@@ -26,7 +26,7 @@ import com.android.systemui.qs.SecureSetting;
 import com.android.systemui.qs.QSTile;
 import com.android.systemui.R;
 
-import org.cyanogenmod.internal.logging.CMMetricsLogger;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 /** Quick settings tile: Ambient Display **/
 public class AmbientDisplayTile extends QSTile<QSTile.BooleanState> {
@@ -97,7 +97,7 @@ public class AmbientDisplayTile extends QSTile<QSTile.BooleanState> {
 
     @Override
     public int getMetricsCategory() {
-        return CMMetricsLogger.TILE_AMBIENT_DISPLAY;
+        return MetricsEvent.NOTIFICATION_APP_NOTIFICATION;
     }
 
     @Override
