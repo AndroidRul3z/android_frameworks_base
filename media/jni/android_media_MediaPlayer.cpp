@@ -182,23 +182,17 @@ CheckExtMediaFn JNIMediaPlayerFactory::sExtMediaFn =
 CreateNativeQCMediaPlayerFn JNIMediaPlayerFactory::sNativeQCMediaPlayerFn =
         JNIMediaPlayerFactory::loadNativeQCMediaPlayer();
 
-bool load_fail = false;
 
 void JNIMediaPlayerFactory::loadLib()
 {
-    if (load_fail) {
-        return;
-    }
-
     if (!mLibHandle) {
         mLibHandle = ::dlopen(EXTMEDIAJNI_LIB_NAME, RTLD_LAZY);
         if (!mLibHandle) {
-            ALOGI("%s", dlerror());
-            load_fail = true;
+            ALOGV("%s", dlerror());
             return;
         }
-    ALOGI("Opened %s", EXTMEDIAJNI_LIB_NAME);
-    }
+    ALOGV("Opened %s", EXTMEDIAJNI_LIB_NAME);
+  }
 }
 
 CreateJNIExtMediaPlayerListenerFn JNIMediaPlayerFactory::loadJNIExtMediaPlayerListener()
@@ -273,7 +267,7 @@ bool JNIMediaPlayerFactory::checkExtMedia(JNIEnv *env, jobject thiz)
     if (sExtMediaFn) {
         bIsQCMediaPlayerPresent = (*sExtMediaFn)(env, thiz);
     }
-    ALOGI("JNIMediaPlayerFactory: bIsQCMediaPlayerPresent %d", bIsQCMediaPlayerPresent);
+    ALOGE("JNIMediaPlayerFactory: bIsQCMediaPlayerPresent %d", bIsQCMediaPlayerPresent);
     return bIsQCMediaPlayerPresent;
 }
 
